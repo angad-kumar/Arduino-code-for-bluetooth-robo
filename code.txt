@@ -1,0 +1,81 @@
+//connect the RX pin to TX pin
+//connect the TX pin to RX pin
+void setup()
+{
+  pinMode(5,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(8,OUTPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  if(Serial.available()>0)
+  {
+    int data=Serial.read();
+    if(data=='A')
+    {
+      Stop();
+      delay(100);
+      forward();
+    }
+    else if(data=='B')
+    {
+      Stop();
+      delay(100);
+      back();
+    }
+    else if(data=='C')
+    {
+      Stop();
+      delay(100);
+      left();
+    }
+    else if(data=='D')
+    {
+      Stop();
+      delay(100);
+      right();
+    }
+   else if(data=='E')
+    {
+      Stop();
+     
+    }
+  }
+}
+void forward()
+{
+  digitalWrite(5,HIGH);
+  digitalWrite(6,LOW);
+  digitalWrite(7,HIGH);
+  digitalWrite(8,LOW);
+}
+void back()
+{
+  digitalWrite(5,LOW);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,LOW);
+  digitalWrite(8,HIGH);
+}
+void Stop()
+{
+  digitalWrite(5,LOW);
+  digitalWrite(6,LOW);
+  digitalWrite(7,LOW);
+  digitalWrite(8,LOW);
+}
+void left()
+{
+  digitalWrite(5,LOW);
+  digitalWrite(6,HIGH);
+  digitalWrite(7,HIGH);
+  digitalWrite(8,LOW);
+}
+void right()
+{
+  digitalWrite(5,HIGH);
+  digitalWrite(6,LOW);
+  digitalWrite(7,LOW);
+  digitalWrite(8,HIGH);
+}
